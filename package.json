@@ -1,0 +1,58 @@
+{
+  "name": "civicissue",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CivicIssue — Report it. Track it. Resolve it. A citizen-focused civic issue reporting and resolution platform.",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0 -p 3000",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "db:generate": "tsx scripts/db-generate.ts",
+    "db:push": "tsx scripts/db-push.ts",
+    "db:seed": "tsx scripts/db-seed.ts",
+    "db:setup": "npm run db:push && npm run db:seed",
+    "db:reset": "tsx scripts/db-reset.ts && npm run db:setup"
+  },
+  "prisma": {
+    "seed": "tsx scripts/db-seed.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^13.0.3",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "drizzle-orm": "^0.44.2",
+    "jose": "^6.0.11",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.525.0",
+    "next": "^15.5.4",
+    "postgres": "^3.4.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "recharts": "^2.15.4",
+    "sonner": "^2.0.6",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^3.25.74"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/leaflet": "^1.9.20",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^9.30.0",
+    "eslint-config-next": "^15.5.4",
+    "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
