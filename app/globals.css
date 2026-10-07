@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   CivicIssue design system
+   Warm off-white surfaces, deep charcoal text, terracotta primary accent.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-canvas: #faf7f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4efe7;
+  --color-ink: #26221d;
+  --color-ink-soft: #575046;
+  --color-ink-muted: #8a8175;
+  --color-line: #e7dfd2;
+  --color-line-strong: #d6cbb8;
+
+  --color-terra-50: #fdf3ef;
+  --color-terra-100: #fae2d9;
+  --color-terra-200: #f4c3b2;
+  --color-terra-300: #eb9c82;
+  --color-terra-400: #e07553;
+  --color-terra-500: #d35a34;
+  --color-terra-600: #bf4726;
+  --color-terra-700: #9d3a1f;
+  --color-terra-800: #7e311e;
+  --color-terra-900: #662a1b;
+
+  --color-amber-accent: #d9930d;
+  --color-amber-soft: #fdf3dc;
+  --color-verdant: #4d8a5b;
+  --color-verdant-soft: #e9f3eb;
+  --color-alert: #c04545;
+  --color-alert-soft: #fbeaea;
+  --color-info: #3f6f9f;
+  --color-info-soft: #e9f0f7;
+  --color-active: #7a5aa6;
+  --color-active-soft: #f1ecf8;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 0.75rem;
+
+  --shadow-card: 0 1px 2px rgb(38 34 29 / 0.05), 0 4px 16px rgb(38 34 29 / 0.06);
+  --shadow-pop: 0 8px 30px rgb(38 34 29 / 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible, consistent focus states for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-terra-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-terra-200);
+}
+
+/* Leaflet map sizing helper */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: var(--color-surface-2);
+  font-family: var(--font-sans);
+}
+
+/* Cluster bubble markers */
+.civic-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-terra-600);
+  color: #fff;
+  font-weight: 700;
+  border: 3px solid rgb(255 255 255 / 0.9);
+  box-shadow: 0 2px 8px rgb(38 34 29 / 0.35);
+}
+
+.civic-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px 9999px 9999px 4px;
+  transform: rotate(-45deg);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgb(38 34 29 / 0.4);
+}
+.civic-pin > span {
+  transform: rotate(45deg);
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Before/After comparison slider */
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.ba-slider .ba-after {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  border-radius: 8px;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.6),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Utility: hide scrollbar for horizontal chip rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
